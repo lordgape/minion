@@ -15,8 +15,8 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should have good health"', async () => {
+      expect(await appController.getHealth()).toBe('Minion - Http Notification Service Client is Green');
     });
   });
 });
