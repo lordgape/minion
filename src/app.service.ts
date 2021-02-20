@@ -9,10 +9,9 @@ export class AppService {
 
   constructor() {
     const microserviceOptions: ClientOptions = {
-      transport: Transport.TCP,
+      transport: Transport.REDIS,
       options: {
-        host: '172.25.0.25',
-        port: 8877,
+        url: 'redis://172.25.0.23:6379',
       },
     };
 
