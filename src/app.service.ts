@@ -11,7 +11,7 @@ export class AppService {
     const microserviceOptions: ClientOptions = {
       transport: Transport.TCP,
       options: {
-        host: '127.0.0.1',
+        host: '172.25.0.25',
         port: 8877,
       },
     };

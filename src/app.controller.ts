@@ -2,6 +2,7 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { MySubscription } from './app.my.subscription.model';
 import { AppService } from './app.service';
 import { SubscriptionDto } from './dto/app.subscription-dto';
+import { Topic } from './dto/app.topic';
 
 @Controller()
 export class AppController {
@@ -18,12 +19,14 @@ export class AppController {
   }
 
   @Post('/subscribe/:topic')
-  async subscribe(@Body() subcriptionDto: SubscriptionDto, @Param('topic') topic: string): Promise<MySubscription> {
+  async subscribe(@Body() subcriptionDto: SubscriptionDto, @Param() params: Topic): Promise<MySubscription> {
+    const {topic} = params
     return this.appService.subscribe(subcriptionDto, topic);
   }
 
   @Post('/publish/:topic')
-  async publishTopic(@Param('topic') topic: string, @Body() payload: object): Promise<object> {
+  async publishTopic(@Param() param: Topic, @Body() payload: object): Promise<object> {
+    const {topic} = param;
     return this.appService.publishTopic(topic,payload);
   }
 }
